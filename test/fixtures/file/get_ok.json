@@ -1,0 +1,19 @@
+{
+    "content_type": "foo",
+    "created_at": "2016-12-31T12:30:00Z",
+    "description": "foo",
+    "entity_type": "foo",
+    "external_id": "foo",
+    "filename": "foo",
+    "group_mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "id": 123,
+    "member_mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "name": "foo",
+    "size": 123,
+    "story_ids": [123],
+    "thumbnail_url": "foo",
+    "updated_at": "2016-12-31T12:30:00Z",
+    "uploader_id": "12345678-9012-3456-7890-123456789012",
+    "url": "foo"
+}

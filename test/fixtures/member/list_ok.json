@@ -1,0 +1,26 @@
+[{
+    "created_at": "2016-12-31T12:30:00Z",
+    "disabled": true,
+    "entity_type": "foo",
+    "group_ids": ["12345678-9012-3456-7890-123456789012"],
+    "id": "12345678-9012-3456-7890-123456789012",
+    "profile": {
+        "deactivated": true,
+        "display_icon": {
+            "created_at": "2016-12-31T12:30:00Z",
+            "entity_type": "foo",
+            "id": "12345678-9012-3456-7890-123456789012",
+            "updated_at": "2016-12-31T12:30:00Z",
+            "url": "foo"
+        },
+        "email_address": "foo",
+        "entity_type": "foo",
+        "gravatar_hash": "foo",
+        "id": "12345678-9012-3456-7890-123456789012",
+        "mention_name": "foo",
+        "name": "foo",
+        "two_factor_auth_activated": true
+    },
+    "role": "foo",
+    "updated_at": "2016-12-31T12:30:00Z"
+}]

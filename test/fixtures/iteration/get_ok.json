@@ -1,0 +1,52 @@
+{
+    "app_url": "foo",
+    "created_at": "2016-12-31T12:30:00Z",
+    "end_date": "2016-12-31T12:30:00Z",
+    "entity_type": "foo",
+    "follower_ids": ["12345678-9012-3456-7890-123456789012"],
+    "group_ids": ["12345678-9012-3456-7890-123456789012"],
+    "group_mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "id": 123,
+    "labels": [{
+        "app_url": "foo",
+        "archived": true,
+        "color": "foo",
+        "created_at": "2016-12-31T12:30:00Z",
+        "description": "foo",
+        "entity_type": "foo",
+        "external_id": "foo",
+        "id": 123,
+        "name": "foo",
+        "stats": {
+            "num_epics": 123,
+            "num_points_completed": 123,
+            "num_points_in_progress": 123,
+            "num_points_total": 123,
+            "num_related_documents": 123,
+            "num_stories_completed": 123,
+            "num_stories_in_progress": 123,
+            "num_stories_total": 123,
+            "num_stories_unestimated": 123
+        },
+        "updated_at": "2016-12-31T12:30:00Z"
+    }],
+    "member_mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "mention_ids": ["12345678-9012-3456-7890-123456789012"],
+    "name": "foo",
+    "start_date": "2016-12-31T12:30:00Z",
+    "stats": {
+        "average_cycle_time": 123,
+        "average_lead_time": 123,
+        "num_points": 123,
+        "num_points_done": 123,
+        "num_points_started": 123,
+        "num_points_unstarted": 123,
+        "num_related_documents": 123,
+        "num_stories_done": 123,
+        "num_stories_started": 123,
+        "num_stories_unestimated": 123,
+        "num_stories_unstarted": 123
+    },
+    "status": "foo",
+    "updated_at": "2016-12-31T12:30:00Z"
+}

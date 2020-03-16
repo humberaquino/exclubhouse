@@ -1,0 +1,9 @@
+{
+    "id": "12345678-9012-3456-7890-123456789012",
+    "mention_name": "foo",
+    "name": "foo",
+    "workspace2": {
+        "estimate_scale": [123],
+        "url_slug": "foo"
+    }
+}

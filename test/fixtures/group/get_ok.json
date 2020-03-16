@@ -1,0 +1,17 @@
+{
+    "app_url": "foo",
+    "archived": true,
+    "description": "foo",
+    "display_icon": {
+        "created_at": "2016-12-31T12:30:00Z",
+        "entity_type": "foo",
+        "id": "12345678-9012-3456-7890-123456789012",
+        "updated_at": "2016-12-31T12:30:00Z",
+        "url": "foo"
+    },
+    "entity_type": "foo",
+    "id": "12345678-9012-3456-7890-123456789012",
+    "member_ids": ["12345678-9012-3456-7890-123456789012"],
+    "mention_name": "foo",
+    "name": "foo"
+}
