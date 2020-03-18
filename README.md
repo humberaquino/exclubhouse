@@ -1,9 +1,9 @@
 # ExClubhouse
 
-![build](https://github.com/humberaquino/exclubhouse/workflows/build/badge.svg)
+[![build](https://github.com/humberaquino/exclubhouse/workflows/build/badge.svg)](https://github.com/humberaquino/exclubhouse/actions?query=branch%3Amaster+workflow%3Abuild)
 [![Coverage Status](https://coveralls.io/repos/github/humberaquino/exclubhouse/badge.svg?branch=master)](https://coveralls.io/github/humberaquino/exclubhouse?branch=master)
-![hex](https://img.shields.io/hexpm/v/exclubhouse)
-![license](https://img.shields.io/github/license/humberaquino/exclubhouse)
+[![hex](https://img.shields.io/hexpm/v/exclubhouse)](https://hex.pm/packages/exclubhouse)
+[![license](https://img.shields.io/github/license/humberaquino/exclubhouse)](LICENSE)
 
 Clubhouse client library for Elixir 🧙‍♂️
 
