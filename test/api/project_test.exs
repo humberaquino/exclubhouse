@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.ProjectTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Project
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.ProjectTest do
                   id: 123,
                   team_id: 123
                 }
-              ]} = Session.new("dummy") |> Project.list()
+              ]} = Project.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.ProjectTest do
               %Model.Project{
                 id: ^project_id,
                 team_id: 123
-              }} = Session.new("dummy") |> Project.get(project_id)
+              }} = Project.get(project_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.ProjectTest do
 
       project_id = 1
 
-      assert :not_found = Session.new("dummy") |> Project.get(project_id)
+      assert :not_found = Project.get(project_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.ProjectTest do
               %Model.Project{
                 id: 123,
                 team_id: 123
-              }} = Session.new("dummy") |> Project.create(project_input)
+              }} = Project.create(project_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.ProjectTest do
               %Model.Project{
                 id: ^project_id,
                 team_id: 123
-              }} = Session.new("dummy") |> Project.update(project_id, project_input)
+              }} = Project.update(project_id, project_input)
     end
   end
 
@@ -97,7 +97,7 @@ defmodule ExClubhouse.Api.ProjectTest do
 
       project_id = 123
 
-      assert :ok = Session.new("dummy") |> Project.delete(project_id)
+      assert :ok = Project.delete(project_id)
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.ProjectTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Project.story_list(project_id)
+              ]} = Project.story_list(project_id)
     end
   end
 end

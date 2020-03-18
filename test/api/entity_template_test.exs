@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.EntityTemplate
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -22,7 +22,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
                   entity_type: "foo",
                   id: "12345678-9012-3456-7890-123456789012"
                 }
-              ]} = Session.new("dummy") |> EntityTemplate.list()
+              ]} = EntityTemplate.list()
     end
   end
 
@@ -41,7 +41,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
                 created_at: "2016-12-31T12:30:00Z",
                 entity_type: "foo",
                 id: "12345678-9012-3456-7890-123456789012"
-              }} = Session.new("dummy") |> EntityTemplate.get(entity_template_id)
+              }} = EntityTemplate.get(entity_template_id)
     end
 
     test "not found response" do
@@ -52,7 +52,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
 
       entity_template_id = 1
 
-      assert :not_found = Session.new("dummy") |> EntityTemplate.get(entity_template_id)
+      assert :not_found = EntityTemplate.get(entity_template_id)
     end
   end
 
@@ -71,7 +71,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
                 created_at: "2016-12-31T12:30:00Z",
                 entity_type: "foo",
                 id: "12345678-9012-3456-7890-123456789012"
-              }} = Session.new("dummy") |> EntityTemplate.create(category_input)
+              }} = EntityTemplate.create(category_input)
     end
   end
 
@@ -92,7 +92,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
                 created_at: "2016-12-31T12:30:00Z",
                 entity_type: "foo",
                 id: "12345678-9012-3456-7890-123456789012"
-              }} = Session.new("dummy") |> EntityTemplate.update(entity_template_id, category_input)
+              }} = EntityTemplate.update(entity_template_id, category_input)
     end
   end
 
@@ -105,7 +105,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
 
       entity_template_id = 123
 
-      assert :ok = Session.new("dummy") |> EntityTemplate.delete(entity_template_id)
+      assert :ok = EntityTemplate.delete(entity_template_id)
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
         ResponseBuilder.build_empty_response()
       end)
 
-      assert :ok = Session.new("dummy") |> EntityTemplate.disable()
+      assert :ok = EntityTemplate.disable()
     end
   end
 
@@ -127,7 +127,7 @@ defmodule ExClubhouse.Api.EntityTemplateTest do
         ResponseBuilder.build_empty_response()
       end)
 
-      assert :ok = Session.new("dummy") |> EntityTemplate.enable()
+      assert :ok = EntityTemplate.enable()
     end
   end
 end

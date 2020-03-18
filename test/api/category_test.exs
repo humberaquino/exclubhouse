@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.CategoryTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Category
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.CategoryTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Category.list()
+              ]} = Category.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.CategoryTest do
               %Model.Category{
                 id: ^category_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Category.get(category_id)
+              }} = Category.get(category_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.CategoryTest do
 
       category_id = 1
 
-      assert :not_found = Session.new("dummy") |> Category.get(category_id)
+      assert :not_found = Category.get(category_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.CategoryTest do
               %Model.Category{
                 id: 123,
                 name: "foo"
-              }} = Session.new("dummy") |> Category.create(category_input)
+              }} = Category.create(category_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.CategoryTest do
               %Model.Category{
                 id: ^category_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Category.update(category_id, category_input)
+              }} = Category.update(category_id, category_input)
     end
   end
 
@@ -97,7 +97,7 @@ defmodule ExClubhouse.Api.CategoryTest do
 
       category_id = 123
 
-      assert :ok = Session.new("dummy") |> Category.delete(category_id)
+      assert :ok = Category.delete(category_id)
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.CategoryTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Category.milestone_list(category_id)
+              ]} = Category.milestone_list(category_id)
     end
   end
 end

@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.StoryLinkTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.StoryLink
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "get/1" do
@@ -19,7 +19,7 @@ defmodule ExClubhouse.Api.StoryLinkTest do
       assert {:ok,
               %Model.StoryLink{
                 id: ^story_link_id
-              }} = Session.new("dummy") |> StoryLink.get(story_link_id)
+              }} = StoryLink.get(story_link_id)
     end
   end
 
@@ -35,7 +35,7 @@ defmodule ExClubhouse.Api.StoryLinkTest do
       assert {:ok,
               %Model.StoryLink{
                 id: 123
-              }} = Session.new("dummy") |> StoryLink.create(story_link_input)
+              }} = StoryLink.create(story_link_input)
     end
   end
 
@@ -53,7 +53,7 @@ defmodule ExClubhouse.Api.StoryLinkTest do
       assert {:ok,
               %Model.StoryLink{
                 id: ^story_link_id
-              }} = Session.new("dummy") |> StoryLink.update(story_link_id, story_link_input)
+              }} = StoryLink.update(story_link_id, story_link_input)
     end
   end
 
@@ -66,7 +66,7 @@ defmodule ExClubhouse.Api.StoryLinkTest do
 
       story_link_id = 123
 
-      assert :ok = Session.new("dummy") |> StoryLink.delete(story_link_id)
+      assert :ok = StoryLink.delete(story_link_id)
     end
   end
 end

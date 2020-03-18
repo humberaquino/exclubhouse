@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Milestone
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Milestone.list()
+              ]} = Milestone.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
               %Model.Milestone{
                 id: ^milestone_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Milestone.get(milestone_id)
+              }} = Milestone.get(milestone_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
 
       milestone_id = 1
 
-      assert :not_found = Session.new("dummy") |> Milestone.get(milestone_id)
+      assert :not_found = Milestone.get(milestone_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
               %Model.Milestone{
                 id: 123,
                 name: "foo"
-              }} = Session.new("dummy") |> Milestone.create(milestone_input)
+              }} = Milestone.create(milestone_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
               %Model.Milestone{
                 id: ^milestone_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Milestone.update(milestone_id, milestone_input)
+              }} = Milestone.update(milestone_id, milestone_input)
     end
   end
 
@@ -97,7 +97,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
 
       milestone_id = 123
 
-      assert :ok = Session.new("dummy") |> Milestone.delete(milestone_id)
+      assert :ok = Milestone.delete(milestone_id)
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.MilestoneTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Milestone.epic_list(milestone_id)
+              ]} = Milestone.epic_list(milestone_id)
     end
   end
 end

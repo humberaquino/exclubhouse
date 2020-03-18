@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.MemberTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Member
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
 
   describe "current_member_info/1" do
     test "succeeds with the right response" do
@@ -17,7 +17,7 @@ defmodule ExClubhouse.Api.MemberTest do
               %Model.MemberInfo{
                 id: "12345678-9012-3456-7890-123456789012",
                 name: "foo"
-              }} = Session.new("dummy") |> Member.current_member_info()
+              }} = Member.current_member_info()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.MemberTest do
                   id: ^member_id,
                   role: "foo"
                 }
-              ]} = Session.new("dummy") |> Member.list(org_id)
+              ]} = Member.list(org_id)
     end
   end
 
@@ -55,7 +55,7 @@ defmodule ExClubhouse.Api.MemberTest do
               %Model.Member{
                 id: ^member_id,
                 role: "foo"
-              }} = Session.new("dummy") |> Member.get(org_id, member_id)
+              }} = Member.get(org_id, member_id)
     end
   end
 end

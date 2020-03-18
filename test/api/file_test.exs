@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.FileTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.File
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.FileTest do
                   id: 123,
                   content_type: "foo"
                 }
-              ]} = Session.new("dummy") |> File.list()
+              ]} = File.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.FileTest do
               %Model.File{
                 id: ^file_id,
                 content_type: "foo"
-              }} = Session.new("dummy") |> File.get(file_id)
+              }} = File.get(file_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.FileTest do
 
       file_id = 1
 
-      assert :not_found = Session.new("dummy") |> File.get(file_id)
+      assert :not_found = File.get(file_id)
     end
   end
 
@@ -66,7 +66,7 @@ defmodule ExClubhouse.Api.FileTest do
               %Model.File{
                 id: ^file_id,
                 content_type: "foo"
-              }} = Session.new("dummy") |> File.update(file_id, file_input)
+              }} = File.update(file_id, file_input)
     end
   end
 
@@ -79,7 +79,7 @@ defmodule ExClubhouse.Api.FileTest do
 
       file_id = 123
 
-      assert :ok = Session.new("dummy") |> File.delete(file_id)
+      assert :ok = File.delete(file_id)
     end
   end
 end

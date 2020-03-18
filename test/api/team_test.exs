@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.TeamTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Team
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
 
   describe "list/1" do
     test "succeeds with the right response" do
@@ -19,7 +19,7 @@ defmodule ExClubhouse.Api.TeamTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Team.list()
+              ]} = Team.list()
     end
   end
 
@@ -36,7 +36,7 @@ defmodule ExClubhouse.Api.TeamTest do
               %Model.Team{
                 id: ^team_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Team.get(team_id)
+              }} = Team.get(team_id)
     end
 
     test "not found response" do
@@ -47,7 +47,7 @@ defmodule ExClubhouse.Api.TeamTest do
 
       team_id = 1
 
-      assert :not_found = Session.new("dummy") |> Team.get(team_id)
+      assert :not_found = Team.get(team_id)
     end
   end
 end

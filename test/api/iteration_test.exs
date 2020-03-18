@@ -5,7 +5,7 @@ defmodule ExClubhouse.Api.IterationTest do
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Iteration
 
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.IterationTest do
                 %Model.IterationSlim{
                   id: 123
                 }
-              ]} = Session.new("dummy") |> Iteration.list()
+              ]} = Iteration.list()
     end
   end
 
@@ -36,7 +36,7 @@ defmodule ExClubhouse.Api.IterationTest do
       assert {:ok,
               %Model.Iteration{
                 id: 123
-              }} = Session.new("dummy") |> Iteration.get(iteration_id)
+              }} = Iteration.get(iteration_id)
     end
 
     test "not found response" do
@@ -47,7 +47,7 @@ defmodule ExClubhouse.Api.IterationTest do
 
       iteration_id = 1
 
-      assert :not_found = Session.new("dummy") |> Iteration.get(iteration_id)
+      assert :not_found = Iteration.get(iteration_id)
     end
   end
 
@@ -63,7 +63,7 @@ defmodule ExClubhouse.Api.IterationTest do
       assert {:ok,
               %Model.Iteration{
                 id: 123
-              }} = Session.new("dummy") |> Iteration.create(category_input)
+              }} = Iteration.create(category_input)
     end
   end
 
@@ -81,7 +81,7 @@ defmodule ExClubhouse.Api.IterationTest do
       assert {:ok,
               %Model.Iteration{
                 id: 123
-              }} = Session.new("dummy") |> Iteration.update(iteration_id, category_input)
+              }} = Iteration.update(iteration_id, category_input)
     end
   end
 
@@ -94,7 +94,7 @@ defmodule ExClubhouse.Api.IterationTest do
 
       iteration_id = 123
 
-      assert :ok = Session.new("dummy") |> Iteration.delete(iteration_id)
+      assert :ok = Iteration.delete(iteration_id)
     end
   end
 
@@ -105,7 +105,7 @@ defmodule ExClubhouse.Api.IterationTest do
         ResponseBuilder.build_empty_response()
       end)
 
-      assert :ok = Session.new("dummy") |> Iteration.disable()
+      assert :ok = Iteration.disable()
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.IterationTest do
         ResponseBuilder.build_empty_response()
       end)
 
-      assert :ok = Session.new("dummy") |> Iteration.enable()
+      assert :ok = Iteration.enable()
     end
   end
 end
