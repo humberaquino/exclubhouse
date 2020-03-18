@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.GroupTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Group
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.GroupTest do
                   id: "12345678-9012-3456-7890-123456789012",
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Group.list()
+              ]} = Group.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.GroupTest do
               %Model.Group{
                 id: ^group_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Group.get(group_id)
+              }} = Group.get(group_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.GroupTest do
 
       group_id = 1
 
-      assert :not_found = Session.new("dummy") |> Group.get(group_id)
+      assert :not_found = Group.get(group_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.GroupTest do
               %Model.Group{
                 id: "12345678-9012-3456-7890-123456789012",
                 name: "foo"
-              }} = Session.new("dummy") |> Group.create(group_input)
+              }} = Group.create(group_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.GroupTest do
               %Model.Group{
                 id: ^group_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Group.update(group_id, group_input)
+              }} = Group.update(group_id, group_input)
     end
   end
 end

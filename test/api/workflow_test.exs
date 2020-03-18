@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.WorkflowTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Workflow
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
 
   describe "list/1" do
     test "succeeds with the right response" do
@@ -19,7 +19,7 @@ defmodule ExClubhouse.Api.WorkflowTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Workflow.list()
+              ]} = Workflow.list()
     end
   end
 end

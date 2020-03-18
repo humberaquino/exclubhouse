@@ -22,7 +22,7 @@ defmodule ExClubhouse.Api.EpicTest do
                   app_url: "foo",
                   stats: %Model.EpicStats{num_points: 123}
                 }
-              ]} = Session.new("dummy") |> Epic.list()
+              ]} = Epic.list()
     end
 
     test "succeeds composed request with the right response" do
@@ -58,7 +58,7 @@ defmodule ExClubhouse.Api.EpicTest do
                 id: ^epic_id,
                 app_url: "foo",
                 stats: %Model.EpicStats{num_points: 123}
-              }} = Session.new("dummy") |> Epic.get(epic_id)
+              }} = Epic.get(epic_id)
     end
 
     test "not found response" do
@@ -69,7 +69,7 @@ defmodule ExClubhouse.Api.EpicTest do
 
       epic_id = 1
 
-      assert :not_found = Session.new("dummy") |> Epic.get(epic_id)
+      assert :not_found = Epic.get(epic_id)
     end
   end
 
@@ -111,7 +111,7 @@ defmodule ExClubhouse.Api.EpicTest do
                 id: 123,
                 app_url: "foo",
                 stats: %Model.EpicStats{num_points: 123}
-              }} = Session.new("dummy") |> Epic.create(epic_input)
+              }} = Epic.create(epic_input)
     end
   end
 
@@ -155,7 +155,7 @@ defmodule ExClubhouse.Api.EpicTest do
                 id: ^epic_id,
                 app_url: "foo",
                 stats: %Model.EpicStats{num_points: 123}
-              }} = Session.new("dummy") |> Epic.update(epic_id, epic_input)
+              }} = Epic.update(epic_id, epic_input)
     end
   end
 
@@ -168,7 +168,7 @@ defmodule ExClubhouse.Api.EpicTest do
 
       epic_id = 123
 
-      assert :ok = Session.new("dummy") |> Epic.delete(epic_id)
+      assert :ok = Epic.delete(epic_id)
     end
   end
 end

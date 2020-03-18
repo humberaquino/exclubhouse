@@ -93,7 +93,7 @@ defmodule ExClubhouse.Api.Label do
   """
   @spec stories_list(integer) :: {:ok, [ExClubhouse.Model.StorySlim.t()]} | {:error, ExClubhouse.Error.t()}
   def stories_list(label_public_id) do
-    Config.default() |> Session.from() |> epics_list(label_public_id)
+    Config.default() |> Session.from() |> stories_list(label_public_id)
   end
 
   ##################################

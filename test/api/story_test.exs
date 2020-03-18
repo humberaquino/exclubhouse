@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.StoryTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Story
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "create/2" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Story{
                 id: 123,
                 name: "foo"
-              }} = Session.new("dummy") |> Story.create(story_input)
+              }} = Story.create(story_input)
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Story{
                 id: ^story_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Story.get(story_id)
+              }} = Story.get(story_id)
     end
   end
 
@@ -56,7 +56,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Story{
                 id: ^story_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Story.update(story_id, story_input)
+              }} = Story.update(story_id, story_input)
     end
   end
 
@@ -69,7 +69,7 @@ defmodule ExClubhouse.Api.StoryTest do
 
       story_id = 123
 
-      assert :ok = Session.new("dummy") |> Story.delete(story_id)
+      assert :ok = Story.delete(story_id)
     end
   end
 
@@ -87,7 +87,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Comment{
                 id: 123,
                 text: "foo"
-              }} = Session.new("dummy") |> Story.create_comment(story_public_id, comment_input)
+              }} = Story.create_comment(story_public_id, comment_input)
     end
   end
 
@@ -105,7 +105,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Comment{
                 id: 123,
                 text: "foo"
-              }} = Session.new("dummy") |> Story.get_comment(story_public_id, comment_public_id)
+              }} = Story.get_comment(story_public_id, comment_public_id)
     end
   end
 
@@ -125,9 +125,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Comment{
                 id: 123,
                 text: "foo"
-              }} =
-               Session.new("dummy")
-               |> Story.update_comment(story_public_id, comment_public_id, update_comment_input)
+              }} = Story.update_comment(story_public_id, comment_public_id, update_comment_input)
     end
   end
 
@@ -141,7 +139,7 @@ defmodule ExClubhouse.Api.StoryTest do
       story_public_id = 123
       comment_public_id = 123
 
-      assert :ok = Session.new("dummy") |> Story.delete_comment(story_public_id, comment_public_id)
+      assert :ok = Story.delete_comment(story_public_id, comment_public_id)
     end
   end
 
@@ -161,9 +159,7 @@ defmodule ExClubhouse.Api.StoryTest do
                 %Model.Reaction{
                   emoji: "foo"
                 }
-              ]} =
-               Session.new("dummy")
-               |> Story.create_reaction(story_public_id, comment_public_id, reaction_input)
+              ]} = Story.create_reaction(story_public_id, comment_public_id, reaction_input)
     end
   end
 
@@ -177,7 +173,7 @@ defmodule ExClubhouse.Api.StoryTest do
       story_public_id = 123
       comment_public_id = 123
 
-      assert :ok = Session.new("dummy") |> Story.delete_reaction(story_public_id, comment_public_id)
+      assert :ok = Story.delete_reaction(story_public_id, comment_public_id)
     end
   end
 
@@ -195,7 +191,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Task{
                 id: 123,
                 complete: true
-              }} = Session.new("dummy") |> Story.get_task(story_public_id, task_public_id)
+              }} = Story.get_task(story_public_id, task_public_id)
     end
   end
 
@@ -215,9 +211,7 @@ defmodule ExClubhouse.Api.StoryTest do
               %Model.Task{
                 id: 123,
                 complete: true
-              }} =
-               Session.new("dummy")
-               |> Story.update_task(story_public_id, task_public_id, update_task_input)
+              }} = Story.update_task(story_public_id, task_public_id, update_task_input)
     end
   end
 
@@ -231,7 +225,7 @@ defmodule ExClubhouse.Api.StoryTest do
       story_public_id = 123
       task_public_id = 123
 
-      assert :ok = Session.new("dummy") |> Story.delete_task(story_public_id, task_public_id)
+      assert :ok = Story.delete_task(story_public_id, task_public_id)
     end
   end
 end

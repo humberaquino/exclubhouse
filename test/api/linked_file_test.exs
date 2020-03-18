@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.LinkedFile
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> LinkedFile.list()
+              ]} = LinkedFile.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
               %Model.LinkedFile{
                 id: ^linked_file_id,
                 name: "foo"
-              }} = Session.new("dummy") |> LinkedFile.get(linked_file_id)
+              }} = LinkedFile.get(linked_file_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
 
       linked_file_id = 1
 
-      assert :not_found = Session.new("dummy") |> LinkedFile.get(linked_file_id)
+      assert :not_found = LinkedFile.get(linked_file_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
               %Model.LinkedFile{
                 id: 123,
                 name: "foo"
-              }} = Session.new("dummy") |> LinkedFile.create(linked_file_input)
+              }} = LinkedFile.create(linked_file_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
               %Model.LinkedFile{
                 id: ^linked_file_id,
                 name: "foo"
-              }} = Session.new("dummy") |> LinkedFile.update(linked_file_id, linked_file_input)
+              }} = LinkedFile.update(linked_file_id, linked_file_input)
     end
   end
 
@@ -97,7 +97,7 @@ defmodule ExClubhouse.Api.LinkedFileTest do
 
       linked_file_id = 123
 
-      assert :ok = Session.new("dummy") |> LinkedFile.delete(linked_file_id)
+      assert :ok = LinkedFile.delete(linked_file_id)
     end
   end
 end

@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.RepositoryTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Repository
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
 
   describe "list/1" do
     test "succeeds with the right response" do
@@ -19,7 +19,7 @@ defmodule ExClubhouse.Api.RepositoryTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Repository.list()
+              ]} = Repository.list()
     end
   end
 
@@ -36,7 +36,7 @@ defmodule ExClubhouse.Api.RepositoryTest do
               %Model.Repository{
                 id: ^repository_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Repository.get(repository_id)
+              }} = Repository.get(repository_id)
     end
 
     test "not found response" do
@@ -47,7 +47,7 @@ defmodule ExClubhouse.Api.RepositoryTest do
 
       repository_id = 1
 
-      assert :not_found = Session.new("dummy") |> Repository.get(repository_id)
+      assert :not_found = Repository.get(repository_id)
     end
   end
 end

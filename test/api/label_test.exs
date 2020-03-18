@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.LabelTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.Label
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
   alias ExClubhouse.Model.Input
 
   describe "list/1" do
@@ -20,7 +20,7 @@ defmodule ExClubhouse.Api.LabelTest do
                   id: 123,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Label.list()
+              ]} = Label.list()
     end
   end
 
@@ -37,7 +37,7 @@ defmodule ExClubhouse.Api.LabelTest do
               %Model.Label{
                 id: ^label_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Label.get(label_id)
+              }} = Label.get(label_id)
     end
 
     test "not found response" do
@@ -48,7 +48,7 @@ defmodule ExClubhouse.Api.LabelTest do
 
       label_id = 1
 
-      assert :not_found = Session.new("dummy") |> Label.get(label_id)
+      assert :not_found = Label.get(label_id)
     end
   end
 
@@ -65,7 +65,7 @@ defmodule ExClubhouse.Api.LabelTest do
               %Model.Label{
                 id: 123,
                 name: "foo"
-              }} = Session.new("dummy") |> Label.create(label_input)
+              }} = Label.create(label_input)
     end
   end
 
@@ -84,7 +84,7 @@ defmodule ExClubhouse.Api.LabelTest do
               %Model.Label{
                 id: ^label_id,
                 name: "foo"
-              }} = Session.new("dummy") |> Label.update(label_id, label_input)
+              }} = Label.update(label_id, label_input)
     end
   end
 
@@ -97,7 +97,7 @@ defmodule ExClubhouse.Api.LabelTest do
 
       label_id = 123
 
-      assert :ok = Session.new("dummy") |> Label.delete(label_id)
+      assert :ok = Label.delete(label_id)
     end
   end
 
@@ -116,7 +116,7 @@ defmodule ExClubhouse.Api.LabelTest do
                   id: ^label_id,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Label.epics_list(label_id)
+              ]} = Label.epics_list(label_id)
     end
   end
 
@@ -135,7 +135,7 @@ defmodule ExClubhouse.Api.LabelTest do
                   id: ^label_id,
                   name: "foo"
                 }
-              ]} = Session.new("dummy") |> Label.stories_list(label_id)
+              ]} = Label.stories_list(label_id)
     end
   end
 end

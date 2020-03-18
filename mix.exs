@@ -18,7 +18,11 @@ defmodule ExClubhouse.MixProject do
         # The main page in the docs
         main: "ExClubhouse",
         extras: ["README.md"]
-      ]
+      ],
+
+      # Coverage
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]
     ]
   end
 
@@ -39,7 +43,8 @@ defmodule ExClubhouse.MixProject do
       {:cortex, "~> 0.1", only: [:dev, :test]},
       {:mimic, "~> 1.0", only: :test},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev], runtime: false},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 

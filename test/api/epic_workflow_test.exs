@@ -4,7 +4,7 @@ defmodule ExClubhouse.Api.EpicWorkflowTest do
 
   alias ExClubhouse.Support.ResponseBuilder
   alias ExClubhouse.Api.EpicWorkflow
-  alias ExClubhouse.{Session, Model}
+  alias ExClubhouse.Model
 
   describe "get/1" do
     test "succeeds with the right response" do
@@ -17,7 +17,7 @@ defmodule ExClubhouse.Api.EpicWorkflowTest do
               %Model.EpicWorkflow{
                 id: 123,
                 default_epic_state_id: 123
-              }} = Session.new("dummy") |> EpicWorkflow.get()
+              }} = EpicWorkflow.get()
     end
 
     test "not found response" do
@@ -26,7 +26,7 @@ defmodule ExClubhouse.Api.EpicWorkflowTest do
         ResponseBuilder.build_not_found_response()
       end)
 
-      assert :not_found = Session.new("dummy") |> EpicWorkflow.get()
+      assert :not_found = EpicWorkflow.get()
     end
   end
 end
