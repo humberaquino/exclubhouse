@@ -96,13 +96,22 @@ through `ExClubhouse.Api` .
 
 # Project roadmap
 
-## Next: 0.6.0
+## Next: v0.6.0
 
 The upcoming versions will complete the following functionality, add better tests and increase coverage.
 
 - [ ] File upload Support
 - [ ] Search API
-- [ ] Increase test coverage to ~80%
+
+## Current: v0.5.1
+
+- Integrate with Coveralls
+- Fixes bug on `Label.stories_list/1` function
+- Increases test coverage to >80%
+
+## Previous 
+### v0.5.0
+- Initial release
 
 # License
 
