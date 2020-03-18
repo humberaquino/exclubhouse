@@ -1,6 +1,7 @@
 # ExClubhouse
 
 ![build](https://github.com/humberaquino/exclubhouse/workflows/build/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/humberaquino/exclubhouse/badge.svg?branch=master)](https://coveralls.io/github/humberaquino/exclubhouse?branch=master)
 
 Clubhouse client library for Elixir 🧙‍♂️
 
