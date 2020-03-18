@@ -30,6 +30,8 @@ config :exclubhouse,
   token: "xxxxx-xxxx-xxxx-xxx-xxx"
 ```
 
+Here's [CH help center doc](https://help.clubhouse.io/hc/en-us/articles/205701199-Clubhouse-API-Tokens) on how to generate a CH API token
+
 ### 2. Use the API
 
 ```Elixir
