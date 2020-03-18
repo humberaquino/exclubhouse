@@ -88,10 +88,6 @@ defmodule ExClubhouse.Parse.Parser do
     end
   end
 
-  def build_structs(json, id) when is_list(json) do
-    json |> Enum.map(fn item -> build_structs(item, id) end)
-  end
-
   def decode_rule_from(id) do
     Parse.Rules.decode_map() |> Map.get(id)
   end
