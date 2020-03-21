@@ -111,7 +111,7 @@ The upcoming versions will complete the following functionality, add better test
 
 ## Previous 
 
-## Current: v0.5.1
+### v0.5.1
 
 - Integrate with Coveralls
 - Fixes bug on `Label.stories_list/1` function
