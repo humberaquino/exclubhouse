@@ -118,6 +118,10 @@ defmodule ExClubhouse.Parse.Rules do
     author_identity: %Model.Identity{}
   }
 
+  @epic_search_results_mapping %Model.EpicSearchResults{
+    data: [@epic_mapping]
+  }
+
   @story_mapping %Model.Story{
     branches: [@branch_mapping],
     comments: [@comment_mapping],
@@ -130,6 +134,15 @@ defmodule ExClubhouse.Parse.Rules do
     stats: @story_stats_mapping,
     story_links: [@typed_story_link_mapping],
     tasks: [@task_mapping]
+  }
+
+  @stories_search_results_mapping %Model.StorySearchResults{
+    data: [@story_mapping]
+  }
+
+  @search_results_mapping %Model.SearchResults{
+    epics: @epic_search_results_mapping,
+    stories: @stories_search_results_mapping
   }
 
   @decode_map %{
@@ -190,6 +203,9 @@ defmodule ExClubhouse.Parse.Rules do
     project_milestone_list: [@story_slim_mapping],
     repository_list: [@repository_mapping],
     repository_get: @repository_mapping,
+    search_search: @search_results_mapping,
+    search_search_epics: @epic_search_results_mapping,
+    search_search_stories: @stories_search_results_mapping,
     workflow_list: [@workflow_mapping],
     team_list: [@team_mapping],
     team_get: @team_mapping,

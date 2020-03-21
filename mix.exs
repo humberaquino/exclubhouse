@@ -4,7 +4,7 @@ defmodule ExClubhouse.MixProject do
   def project do
     [
       app: :exclubhouse,
-      version: "0.5.1",
+      version: "0.5.2",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),

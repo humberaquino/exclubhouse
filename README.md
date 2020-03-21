@@ -105,7 +105,11 @@ through `ExClubhouse.Api` .
 The upcoming versions will complete the following functionality, add better tests and increase coverage.
 
 - [ ] File upload Support
-- [ ] Search API
+
+## Current: v0.5.2
+- Search API added
+
+## Previous 
 
 ## Current: v0.5.1
 
@@ -113,7 +117,6 @@ The upcoming versions will complete the following functionality, add better test
 - Fixes bug on `Label.stories_list/1` function
 - Increases test coverage to >80%
 
-## Previous 
 ### v0.5.0
 - Initial release
 
