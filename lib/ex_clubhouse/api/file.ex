@@ -66,9 +66,9 @@ defmodule ExClubhouse.Api.File do
       iex> ExClubhouse.Api.File.upload("/path/to/file.jpg")
       {:ok, %ExClubhouse.Model.File{...}}
   """
-  @spec upload(binary) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
-  def upload(file_path) do
-    Config.default() |> Session.from() |> upload(file_path)
+  @spec upload(binary() | [binary()]) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
+  def upload(file_paths) do
+    Config.default() |> Session.from() |> upload(file_paths)
   end
 
   ##################################
@@ -96,8 +96,12 @@ defmodule ExClubhouse.Api.File do
     Ops.File.delete(file_public_id) |> Client.HTTP.request(session) |> Parser.parse()
   end
 
-  @spec upload(ExClubhouse.Session.t(), binary) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
-  def upload(%Session{} = session, file_path) do
+  @spec upload(ExClubhouse.Session.t(), binary | [binary]) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
+  def upload(%Session{} = session, file_path) when is_binary(file_path) do
     Ops.File.upload(file_path) |> Client.HTTP.upload(session) |> Parser.parse()
+  end
+
+  def upload(%Session{} = session, file_paths) when is_list(file_paths) do
+    Ops.File.upload(file_paths) |> Client.HTTP.upload(session) |> Parser.parse()
   end
 end

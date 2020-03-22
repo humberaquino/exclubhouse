@@ -16,7 +16,7 @@ Add `exclubhouse` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:exclubhouse, "~> 0.5.0"}
+    {:exclubhouse, "~> 0.6.0"}
   ]
 end
 ```
@@ -100,16 +100,15 @@ through `ExClubhouse.Api` .
 
 # Project roadmap
 
-## Next: v0.6.0
+## Current: v0.6.0
 
-The upcoming versions will complete the following functionality, add better tests and increase coverage.
-
-- [ ] File upload Support
-
-## Current: v0.5.2
-- Search API added
+- File upload support added
 
 ## Previous 
+
+### v0.5.2
+
+- Search API added
 
 ### v0.5.1
 

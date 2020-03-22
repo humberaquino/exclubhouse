@@ -71,6 +71,11 @@ defmodule ExClubhouse.Parse.Parser do
     {:error, %Error{type: :parse, message: message, reason: json_body}}
   end
 
+  def parse(%Client.Result{success: false, error: message, response: response, operation: _operation})
+      when is_binary(message) and is_nil(response) do
+    {:error, %Error{type: :client, message: message, reason: "Invalid request parameters"}}
+  end
+
   def parse(%Client.Result{success: false, response: %HTTPoison.Response{} = response, operation: _operation})
       when not is_nil(response) do
     json_body = Poison.decode!(response.body)
