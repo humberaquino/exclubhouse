@@ -9,7 +9,7 @@ defmodule ExClubhouse.Operation do
           path: binary(),
           params: map() | nil,
           headers: [any()] | nil,
-          body: map() | nil,
+          body: map() | tuple() | nil,
           options: [any()] | nil
         }
 

@@ -82,4 +82,46 @@ defmodule ExClubhouse.Api.FileTest do
       assert :ok = File.delete(file_id)
     end
   end
+
+  describe "upload/1" do
+    test "succeeds with the right response for a single file" do
+      Elixir.File
+      |> expect(:exists?, fn _ -> true end)
+
+      HTTPoison
+      |> expect(:request, fn _r ->
+        ResponseBuilder.build_response("test/fixtures/file/upload_list_ok.json")
+      end)
+
+      assert {:ok,
+              [
+                %Model.File{
+                  id: 123,
+                  content_type: "foo"
+                }
+              ]} = File.upload("/path/to/file")
+    end
+
+    test "succeeds with the right response for multiple file" do
+      Elixir.File
+      |> stub(:exists?, fn _ -> true end)
+
+      HTTPoison
+      |> expect(:request, fn _r ->
+        ResponseBuilder.build_response("test/fixtures/file/upload_list2_ok.json")
+      end)
+
+      assert {:ok,
+              [
+                %Model.File{
+                  id: 123,
+                  content_type: "foo"
+                },
+                %Model.File{
+                  id: 124,
+                  content_type: "foo2"
+                }
+              ]} = File.upload(["/path/to/file1", "/path/to/file2"])
+    end
+  end
 end
