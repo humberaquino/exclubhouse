@@ -169,6 +169,7 @@ defmodule ExClubhouse.Parse.Rules do
     file_list: [@file_mapping],
     file_get: @file_mapping,
     file_update: @file_mapping,
+    file_upload: [@file_mapping],
     group_list: [@group_mapping],
     group_get: @group_mapping,
     group_create: @group_mapping,

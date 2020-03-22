@@ -42,4 +42,18 @@ defmodule ExClubhouse.Ops.File do
       path: "files/#{file_public_id}"
     }
   end
+
+  @spec upload(binary()) :: ExClubhouse.Operation.t()
+  def upload(file_path) do
+    %Operation{
+      id: :file_upload,
+      method: :post,
+      path: "files",
+      body: build_multipart(file_path)
+    }
+  end
+
+  defp build_multipart(file_path) do
+    {:multipart, [{:file, file_path, {"form-data", [name: "filedata", filename: Path.basename(file_path)]}, []}]}
+  end
 end

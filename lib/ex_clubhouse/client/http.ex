@@ -10,6 +10,7 @@ defmodule ExClubhouse.Client.HTTP do
 
   @spec request(ExClubhouse.Operation.t(), ExClubhouse.Session.t(), binary() | nil) ::
           ExClubhouse.Client.Result.t()
+
   def request(
         %Operation{
           method: method,
@@ -26,7 +27,16 @@ defmodule ExClubhouse.Client.HTTP do
     # The token should be part of the query
     params = Map.put(params, :token, token)
 
-    headers = headers ++ [{"Content-Type", "application/json"}]
+    content_type =
+      case body do
+        {:multipart, _} ->
+          [{"Content-Type", "multipart/form-data"}]
+
+        _ ->
+          [{"Content-Type", "application/json"}]
+      end
+
+    headers = headers ++ content_type
 
     request = %HTTPoison.Request{
       method: method,
@@ -57,6 +67,31 @@ defmodule ExClubhouse.Client.HTTP do
       {:error, %HTTPoison.Error{} = error} ->
         %Client.Result{success: false, error: error, operation: operation}
     end
+  end
+
+  @spec upload(ExClubhouse.Operation.t(), ExClubhouse.Session.t(), binary() | nil) ::
+          ExClubhouse.Client.Result.t()
+  def upload(
+        %Operation{body: {:multipart, multipart}} = operation,
+        %Session{} = session,
+        base_url \\ @base_url
+      ) do
+    failed_path =
+      multipart
+      |> Enum.find(fn {:file, path, _, _} ->
+        not File.exists?(path)
+      end)
+
+    if failed_path do
+      %Client.Result{success: false, error: "Failed path: #{inspect(failed_path)}", operation: operation}
+    else
+      request(operation, session, base_url)
+    end
+  end
+
+  # Used by multipar
+  defp encoded_body(tuple) when is_tuple(tuple) do
+    tuple
   end
 
   defp encoded_body("") do

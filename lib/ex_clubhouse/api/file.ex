@@ -59,6 +59,18 @@ defmodule ExClubhouse.Api.File do
     Config.default() |> Session.from() |> delete(file_public_id)
   end
 
+  @doc """
+   Uploads a single file
+
+   ## Example
+      iex> ExClubhouse.Api.File.upload("/path/to/file.jpg")
+      {:ok, %ExClubhouse.Model.File{...}}
+  """
+  @spec upload(binary) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
+  def upload(file_path) do
+    Config.default() |> Session.from() |> upload(file_path)
+  end
+
   ##################################
   ### Session specific functions ###
   ##################################
@@ -82,5 +94,10 @@ defmodule ExClubhouse.Api.File do
   @spec delete(ExClubhouse.Session.t(), integer) :: :ok | {:error, ExClubhouse.Error.t()}
   def delete(%Session{} = session, file_public_id) do
     Ops.File.delete(file_public_id) |> Client.HTTP.request(session) |> Parser.parse()
+  end
+
+  @spec upload(ExClubhouse.Session.t(), binary) :: {:ok, [ExClubhouse.Model.File.t()]} | {:error, ExClubhouse.Error.t()}
+  def upload(%Session{} = session, file_path) do
+    Ops.File.upload(file_path) |> Client.HTTP.upload(session) |> Parser.parse()
   end
 end
