@@ -43,9 +43,9 @@ defmodule ExClubhouse.Api.Story do
       iex> ExClubhouse.Api.Story.update(1, ExClubhouse.Model.Input.Story{...})
       {:ok, %ExClubhouse.Model.Story{...}}
   """
-  @spec update(integer, ExClubhouse.Model.Input.Story.t()) :: {:error, ExClubhouse.Error.t()} | {:ok, ExClubhouse.Model.Story.t()}
-  def update(story_public_id, %Input.Story{} = story_input) do
-    Config.default() |> Session.from() |> update(story_public_id, story_input)
+  @spec update(integer, ExClubhouse.Model.Input.StoryUpdate.t()) :: {:error, ExClubhouse.Error.t()} | {:ok, ExClubhouse.Model.Story.t()}
+  def update(story_public_id, %Input.StoryUpdate{} = story_update_input) do
+    Config.default() |> Session.from() |> update(story_public_id, story_update_input)
   end
 
   @doc """
@@ -217,10 +217,10 @@ defmodule ExClubhouse.Api.Story do
     Ops.Story.create(story_input) |> Client.HTTP.request(sess) |> Parser.parse()
   end
 
-  @spec update(ExClubhouse.Session.t(), integer(), ExClubhouse.Model.Input.Story.t()) ::
+  @spec update(ExClubhouse.Session.t(), integer(), ExClubhouse.Model.Input.StoryUpdate.t()) ::
           {:ok, ExClubhouse.Model.Story.t()} | {:error, ExClubhouse.Error.t()}
-  def update(%Session{} = session, story_public_id, %Input.Story{} = story_input) do
-    Ops.Story.update(story_public_id, story_input)
+  def update(%Session{} = session, story_public_id, %Input.StoryUpdate{} = story_update_input) do
+    Ops.Story.update(story_public_id, story_update_input)
     |> Client.HTTP.request(session)
     |> Parser.parse()
   end
