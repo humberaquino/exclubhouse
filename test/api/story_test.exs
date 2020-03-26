@@ -50,13 +50,13 @@ defmodule ExClubhouse.Api.StoryTest do
 
       story_id = 123
 
-      story_input = %Input.Story{}
+      story_update_input = %Input.StoryUpdate{}
 
       assert {:ok,
               %Model.Story{
                 id: ^story_id,
                 name: "foo"
-              }} = Story.update(story_id, story_input)
+              }} = Story.update(story_id, story_update_input)
     end
   end
 

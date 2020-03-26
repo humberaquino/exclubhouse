@@ -25,12 +25,12 @@ defmodule ExClubhouse.Ops.Story do
     }
   end
 
-  @spec update(integer(), ExClubhouse.Model.Input.Story.t()) :: ExClubhouse.Operation.t()
-  def update(story_public_id, %Input.Story{} = story_input) do
+  @spec update(integer(), ExClubhouse.Model.Input.StoryUpdate.t()) :: ExClubhouse.Operation.t()
+  def update(story_public_id, %Input.StoryUpdate{} = story_update_input) do
     %Operation{
       id: :story_update,
       method: :put,
-      body: Map.from_struct(story_input),
+      body: Map.from_struct(story_update_input),
       path: "stories/#{story_public_id}"
     }
   end
