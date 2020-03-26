@@ -100,11 +100,15 @@ through `ExClubhouse.Api` .
 
 # Project roadmap
 
-## Current: v0.6.0
+## Current: v0.6.1
 
-- File upload support added
+- Fix for Story update [#4](https://github.com/humberaquino/exclubhouse/issues/4)
 
 ## Previous 
+
+### v0.6.0
+
+- File upload support added
 
 ### v0.5.2
 
