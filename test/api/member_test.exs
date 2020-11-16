@@ -28,16 +28,13 @@ defmodule ExClubhouse.Api.MemberTest do
         ResponseBuilder.build_response("test/fixtures/member/list_ok.json")
       end)
 
-      org_id = 123
-      member_id = "12345678-9012-3456-7890-123456789012"
-
       assert {:ok,
               [
                 %Model.Member{
-                  id: ^member_id,
+                  id: "12345678-9012-3456-7890-123456789012",
                   role: "foo"
                 }
-              ]} = Member.list(org_id)
+              ]} = Member.list()
     end
   end
 
@@ -48,14 +45,13 @@ defmodule ExClubhouse.Api.MemberTest do
         ResponseBuilder.build_response("test/fixtures/member/get_ok.json")
       end)
 
-      org_id = 123
       member_id = "12345678-9012-3456-7890-123456789012"
 
       assert {:ok,
               %Model.Member{
                 id: ^member_id,
                 role: "foo"
-              }} = Member.get(org_id, member_id)
+              }} = Member.get(member_id)
     end
   end
 end
