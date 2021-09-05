@@ -1,6 +1,6 @@
 defmodule ExClubhouse.Model.Label do
   @moduledoc """
-  Label reponse model
+  Label response model
   """
 
   alias ExClubhouse.Model

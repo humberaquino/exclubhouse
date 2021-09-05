@@ -2,16 +2,19 @@
 
 [![build](https://github.com/humberaquino/exclubhouse/workflows/build/badge.svg)](https://github.com/humberaquino/exclubhouse/actions?query=branch%3Amaster+workflow%3Abuild)
 [![Coverage Status](https://coveralls.io/repos/github/humberaquino/exclubhouse/badge.svg?branch=master)](https://coveralls.io/github/humberaquino/exclubhouse?branch=master)
-[![hex](https://img.shields.io/hexpm/v/exclubhouse)](https://hex.pm/packages/exclubhouse)
-[![license](https://img.shields.io/github/license/humberaquino/exclubhouse)](LICENSE)
+[![Module Version](https://img.shields.io/hexpm/v/exclubhouse.svg)](https://hex.pm/packages/exclubhouse)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/exclubhouse/)
+[![Total Download](https://img.shields.io/hexpm/dt/exclubhouse.svg)](https://hex.pm/packages/exclubhouse)
+[![License](https://img.shields.io/hexpm/l/exclubhouse.svg)](https://github.com/humberaquino/exclubhouse/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/humberaquino/exclubhouse.svg)](https://github.com/yyy/exclubhouse/commits/master)
 
 Clubhouse client library for Elixir 🧙‍♂️
 
 Uses Clubhouse REST API V3: https://clubhouse.io/api/rest/v3/
 
-# Installation
+## Installation
 
-Add `exclubhouse` to your list of dependencies in `mix.exs`:
+Add `:exclubhouse` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -21,12 +24,12 @@ def deps do
 end
 ```
 
-# Setup and basic usage
+## Setup and basic usage
 
 ### 1. Add an API token in your config
 
 ```elixir
-config :exclubhouse, 
+config :exclubhouse,
   token: "xxxxx-xxxx-xxxx-xxx-xxx"
 ```
 
@@ -37,12 +40,12 @@ Here's [CH help center doc](https://help.clubhouse.io/hc/en-us/articles/20570119
 ```Elixir
 alias ExClubhouse.{Api, Model}
 
-epic_input = Input.Epic{ 
+epic_input = Input.Epic{
   name: "Your first Epic",
   description: "Some description for the epic"
-} 
+}
 
-Api.Epic.create(epic_input) 
+Api.Epic.create(epic_input)
 ```
 
 Output example:
@@ -62,7 +65,7 @@ You can find all API grouped under `ExClubhouse.Api`
 
 ## Custom usage
 
-In some cases we want to use different tokens for the same call, use the response as-is or simply debug 
+In some cases we want to use different tokens for the same call, use the response as-is or simply debug
 a call to the API using iEx. For those case we can build the API call like this:
 1. Build a session
 2. Create an operation
@@ -71,7 +74,7 @@ a call to the API using iEx. For those case we can build the API call like this:
 
 E.g.
 
-```Elixir
+```elixir
 alias ExClubhouse.{Api, Client, Session, Config, Model, Parse}
 
 # 1. Get a default session from the config
@@ -92,19 +95,17 @@ result = Client.HTTP.request(op, sess)
 # Design guidelines
 
 Here's a list of design guidelines used in the project:
-- 🛸Don't hide anything, but make things easy: The lib can be used as Op+Client+Parser independently or 
+- 🛸Don't hide anything, but make things easy: The lib can be used as Op+Client+Parser independently or
 through `ExClubhouse.Api` .
 - 🍔 Decouple operations, HTTP client and parsing: To allow people to use the lib as they need (e.g. with or without models/structs).
 - 🎁 Results are parsed and presented as structs: for easy pattern matching and usage.
 - 🏄‍♀️ Typespec surface API: Help make correct API calls.
 
-# Project roadmap
+## Changelog
 
-## Current: v0.6.1
+### v0.6.1
 
 - Fix for Story update [#4](https://github.com/humberaquino/exclubhouse/issues/4)
-
-## Previous 
 
 ### v0.6.0
 
@@ -121,8 +122,12 @@ through `ExClubhouse.Api` .
 - Increases test coverage to >80%
 
 ### v0.5.0
+
 - Initial release
 
-# License
+## Copyright and License
 
-Please see [LICENSE](LICENSE) for licensing details.
+Copyright (c) 2020 Humber aquino
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.

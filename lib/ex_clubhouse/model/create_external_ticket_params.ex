@@ -1,6 +1,6 @@
 defmodule ExClubhouse.Model.CreateExternalTicketParams do
   @moduledoc """
-  Creat external ticket params model
+  Create external ticket params model
   """
 
   @type t :: %__MODULE__{

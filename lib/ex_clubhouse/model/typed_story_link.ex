@@ -1,6 +1,6 @@
 defmodule ExClubhouse.Model.TypedStoryLink do
   @moduledoc """
-    TypedStoryLink moddel
+    TypedStoryLink model
   """
 
   @type t :: %__MODULE__{

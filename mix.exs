@@ -1,44 +1,40 @@
 defmodule ExClubhouse.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/humberaquino/exclubhouse"
+  @version "0.6.1"
+
   def project do
     [
       app: :exclubhouse,
-      version: "0.6.1",
+      name: "ExClubhouse",
+      version: @version,
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      docs: docs(),
       package: package(),
-      description: description(),
-
-      # Docs
-      name: "ExClubhouse",
-      source_url: "https://github.com/humberaquino/exclubhouse",
-      docs: [
-        # The main page in the docs
-        main: "ExClubhouse",
-        extras: ["README.md"]
-      ],
-
-      # Coverage
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger, :httpoison]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:httpoison, "~> 1.6"},
       {:poison, "~> 3.1"},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
       {:cortex, "~> 0.1", only: [:dev, :test]},
       {:mimic, "~> 1.0", only: :test},
@@ -48,18 +44,28 @@ defmodule ExClubhouse.MixProject do
     ]
   end
 
-  defp description do
-    """
-    Clubhouse client library for Elixir 🧙‍♂️
-    """
-  end
-
   defp package do
     [
+      description: "Clubhouse client library for Elixir 🧙‍♂️",
       licenses: ["MIT"],
       keywords: ["Elixir", "Clubhouse", "REST", "HTTP"],
       maintainers: ["Humberto Aquino"],
-      links: %{"GitHub" => "https://github.com/humberaquino/exclubhouse", "Docs" => "https://hexdocs.pm/exclubhouse"}
+      links: %{
+        "GitHub" => @source_url
+      }
+    ]
+  end
+
+  defp docs do
+    [
+      extras: [
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
     ]
   end
 end
