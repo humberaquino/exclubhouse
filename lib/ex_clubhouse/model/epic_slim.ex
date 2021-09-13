@@ -1,7 +1,7 @@
 defmodule ExClubhouse.Model.EpicSlim do
   @moduledoc """
   Definition of EpicSlim
-  Ref: https://clubhouse.io/api/rest/v3/#EpicSlim
+  Ref: https://shortcut.com/api/rest/v3/#EpicSlim
   """
 
   alias ExClubhouse.Model
