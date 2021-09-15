@@ -6,7 +6,7 @@ defmodule ExClubhouse.Client.HTTP do
   alias ExClubhouse.{Session, Operation}
   alias ExClubhouse.Client
 
-  @base_url "https://api.clubhouse.io/api/v3"
+  @base_url "https://api.app.shortcut.com/api/v3"
 
   @spec request(ExClubhouse.Operation.t(), ExClubhouse.Session.t(), binary() | nil) ::
           ExClubhouse.Client.Result.t()

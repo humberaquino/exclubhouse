@@ -7,7 +7,7 @@
 
 Clubhouse client library for Elixir 🧙‍♂️
 
-Uses Clubhouse REST API V3: https://clubhouse.io/api/rest/v3/
+Uses Clubhouse REST API V3: https://shortcut.com/api/rest/v3/
 
 # Installation
 
@@ -26,7 +26,7 @@ end
 ### 1. Add an API token in your config
 
 ```elixir
-config :exclubhouse, 
+config :exclubhouse,
   token: "xxxxx-xxxx-xxxx-xxx-xxx"
 ```
 
@@ -37,12 +37,12 @@ Here's [CH help center doc](https://help.clubhouse.io/hc/en-us/articles/20570119
 ```Elixir
 alias ExClubhouse.{Api, Model}
 
-epic_input = Input.Epic{ 
+epic_input = Input.Epic{
   name: "Your first Epic",
   description: "Some description for the epic"
-} 
+}
 
-Api.Epic.create(epic_input) 
+Api.Epic.create(epic_input)
 ```
 
 Output example:
@@ -62,7 +62,7 @@ You can find all API grouped under `ExClubhouse.Api`
 
 ## Custom usage
 
-In some cases we want to use different tokens for the same call, use the response as-is or simply debug 
+In some cases we want to use different tokens for the same call, use the response as-is or simply debug
 a call to the API using iEx. For those case we can build the API call like this:
 1. Build a session
 2. Create an operation
@@ -92,7 +92,7 @@ result = Client.HTTP.request(op, sess)
 # Design guidelines
 
 Here's a list of design guidelines used in the project:
-- 🛸Don't hide anything, but make things easy: The lib can be used as Op+Client+Parser independently or 
+- 🛸Don't hide anything, but make things easy: The lib can be used as Op+Client+Parser independently or
 through `ExClubhouse.Api` .
 - 🍔 Decouple operations, HTTP client and parsing: To allow people to use the lib as they need (e.g. with or without models/structs).
 - 🎁 Results are parsed and presented as structs: for easy pattern matching and usage.
@@ -104,7 +104,7 @@ through `ExClubhouse.Api` .
 
 - Fix for Story update [#4](https://github.com/humberaquino/exclubhouse/issues/4)
 
-## Previous 
+## Previous
 
 ### v0.6.0
 
