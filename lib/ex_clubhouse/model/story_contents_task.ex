@@ -1,6 +1,6 @@
 defmodule ExClubhouse.Model.StoryContentsTask do
   @moduledoc """
-  Story contents task respons model
+  Story contents task response model
   """
   @type t :: %__MODULE__{
           complete: boolean(),
