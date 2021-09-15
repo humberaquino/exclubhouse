@@ -30,21 +30,21 @@ defmodule ExClubhouse.Api.Member do
       iex> ExClubhouse.Api.Member.list()
       {:ok, [%ExClubhouse.Model.Member{...}, ...]}
   """
-  @spec list(binary) :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
-  def list(org_public_id) do
-    Config.default() |> Session.from() |> list(org_public_id)
+  @spec list() :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
+  def list do
+    Config.default() |> Session.from() |> list()
   end
 
   @doc """
-  Get a single LinkedFile by id
+  Get a single Member by id
 
   ## Example
-      iex> ExClubhouse.Api.Member.get("1", "2")
+      iex> ExClubhouse.Api.Member.get("1")
       {:ok, %ExClubhouse.Model.Member{...}}
   """
-  @spec get(binary, binary) :: {:ok, ExClubhouse.Model.Member.t() | nil} | {:error, ExClubhouse.Error.t()}
-  def get(org_public_id, member_public_id) do
-    Config.default() |> Session.from() |> get(org_public_id, member_public_id)
+  @spec get(binary) :: {:ok, ExClubhouse.Model.Member.t() | nil} | {:error, ExClubhouse.Error.t()}
+  def get(member_public_id) do
+    Config.default() |> Session.from() |> get(member_public_id)
   end
 
   ##################################
@@ -58,13 +58,13 @@ defmodule ExClubhouse.Api.Member do
     |> Parser.parse()
   end
 
-  @spec get(ExClubhouse.Session.t(), binary(), binary()) :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
-  def get(%Session{} = session, org_public_id, member_public_id) do
-    Ops.Member.get(org_public_id, member_public_id) |> Client.HTTP.request(session) |> Parser.parse()
+  @spec get(ExClubhouse.Session.t(), binary()) :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
+  def get(%Session{} = session, member_public_id) do
+    Ops.Member.get(member_public_id) |> Client.HTTP.request(session) |> Parser.parse()
   end
 
-  @spec list(ExClubhouse.Session.t(), binary()) :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
-  def list(%Session{} = session, org_public_id) do
-    Ops.Member.list(org_public_id) |> Client.HTTP.request(session) |> Parser.parse()
+  @spec list(ExClubhouse.Session.t()) :: {:ok, [ExClubhouse.Model.Member.t()]} | {:error, ExClubhouse.Error.t()}
+  def list(%Session{} = session) do
+    Ops.Member.list() |> Client.HTTP.request(session) |> Parser.parse()
   end
 end
