@@ -14,24 +14,20 @@ defmodule ExClubhouse.Ops.Member do
     }
   end
 
-  @spec list(binary()) :: ExClubhouse.Operation.t()
-  def list(org_public_id) do
+  @spec list() :: ExClubhouse.Operation.t()
+  def list do
     %Operation{
       id: :member_list,
       method: :get,
-      path: "members",
-      body: %{
-        "org-public-id" => org_public_id
-      }
+      path: "members"
     }
   end
 
-  @spec get(binary(), binary()) :: ExClubhouse.Operation.t()
-  def get(org_public_id, member_public_id) do
+  @spec get(binary()) :: ExClubhouse.Operation.t()
+  def get(member_public_id) do
     %Operation{
       id: :member_get,
       method: :get,
-      body: %{"org-public-id" => org_public_id},
       path: "members/#{member_public_id}"
     }
   end
